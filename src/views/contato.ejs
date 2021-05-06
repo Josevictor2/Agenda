@@ -1,0 +1,48 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> 
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> 
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../Frontend/assets/css/style.css">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8 my-3">
+        <h1 class="text-center">Contatos</h1>
+        <p class="text-center lead">Crie ou edite seus contatos listrados abaixo.</p>  
+      </div>
+      <%- include('includes/mensagens') %>
+      <% if(contato._id) { %>
+         <form action="/contato/edit/<%= contato._id %>" method="POST">
+      <% } else{ %>    
+            <form action="/contato/register" method="POST">
+          <% } %>  
+        <input type="hidden"  name="_csrf" value=<%= csrfToken %>
+         <div class="form-group">
+            <label>Nome</label>
+            <input type="text" class="form-control" name="nome" placeholder="Nome">
+         </div>
+         <div class="form-group">
+            <label>Sobrenome</label>
+            <input type="text" class="form-control" name="sobrenome" placeholder="Sobrenome">
+         </div>
+         <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email" placeholder="Email">
+         </div>
+         <div class="form-group">
+            <label>Telefone</label>
+            <input type="tel" class="form-control" name="telefone" placeholder="Telefone">
+         </div>
+        
+         <button type="submit" value="Cadastrar" class="btn btn-black">Cadastrar</button>
+        
+      </form>
+
+      <div class="col-lg-2"></div>
+    </div>
+  </div>
+
+<%- include('includes/footer') %>
+
+   
